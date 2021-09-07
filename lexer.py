@@ -83,9 +83,6 @@ class MyLexer(object):
         print("Lexical error ' {0} ' found in line ' {1} ' ".format(t.value[0], t.lineno))
         t.lexer.skip(1)
 
-    # Build the lexer
-    def build(self,**kwargs):
-        return lex.lex(module=self, **kwargs)
      
      # Test its output
     def test(self,data):
@@ -95,3 +92,9 @@ class MyLexer(object):
             if not tok: 
                 break
             print(tok)
+
+    # Build the lexer
+    def build(self,**kwargs):
+        self.lexer = lex.lex(module=self, **kwargs)
+        
+        return self.lexer

@@ -147,7 +147,8 @@ tokens = MyLexer.tokens
 
 # Build the parser and lexer
 parser = yacc.yacc()
-lexer = MyLexer().build()
+lexer = MyLexer()
+lexer.build()
 
 if __name__ == '__main__':
 
@@ -159,6 +160,7 @@ if __name__ == '__main__':
             f.close()
             if yacc.parse(data) == "COMPILED":
                 result = parser.parse(data)
+                lexer.test(data)
                 print("Valid input")
                 print(result)
         except EOFError:
