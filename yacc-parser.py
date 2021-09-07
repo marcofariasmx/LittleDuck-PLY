@@ -141,9 +141,13 @@ def p_empty(p):
 import sys
 import ply.yacc as yacc
 
-from lexer import tokens
+from lexer import MyLexer
 
-yacc.yacc()
+tokens = MyLexer.tokens
+
+# Build the parser and lexer
+parser = yacc.yacc()
+lexer = MyLexer().build()
 
 if __name__ == '__main__':
 
@@ -154,8 +158,10 @@ if __name__ == '__main__':
             data = f.read()
             f.close()
             if yacc.parse(data) == "COMPILED":
+                result = parser.parse(data)
                 print("Valid input")
+                print(result)
         except EOFError:
             print(EOFError)
     else:
-        print("No file to test found")
+        print("No file found")

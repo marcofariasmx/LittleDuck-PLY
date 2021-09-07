@@ -6,9 +6,11 @@ var a, b, c : int;
     if (4 <> 5 )
     {
         b = a;
-}
-else
-{
-    print( a, b);
-};
+    }
+    else
+    {
+        c = a + b;
+    };
+
+    print( a, b, c);
 }
