@@ -1,3 +1,10 @@
+import sys
+import ply.yacc as yacc
+
+from lexer import MyLexer
+
+tokens = MyLexer.tokens
+
 # Grammar declaration
 
 def p_program(p):
@@ -137,13 +144,6 @@ def p_empty(p):
     '''empty :'''
     pass
 
-
-import sys
-import ply.yacc as yacc
-
-from lexer import MyLexer
-
-tokens = MyLexer.tokens
 
 # Build the parser and lexer
 parser = yacc.yacc()
